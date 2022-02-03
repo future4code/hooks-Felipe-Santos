@@ -8,4 +8,8 @@ Filmes Favoritos
 7- Star wars
 8- Star trek
 9- Bee Movie
+<<<<<<< HEAD
 10- Bolt ..
+=======
+10- Bolt 
+>>>>>>> 3073fa4d7cd7aa254b35f35b92ee18cd6ae4cb9b
