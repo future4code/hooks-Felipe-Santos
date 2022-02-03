@@ -1,3 +1,11 @@
-Biografia
-Sou Felipe De Oliveira Santos Tenho 22 anos , Moro Niteroi Rio De Janeiro , Meu Hobby e Leitura
-me apaixonei pela labenu quando meu primo me conto sobre ela bem acolhedor 
+Musicas Favoritas 
+1- Esmerald Sword
+2- Night fall
+3- Coat of Arms
+4- Reign of Terror
+5- Unbreakable
+6- Blank File
+7- Triumph for  My Magic Stell
+8- Let in Rock
+9- KOMM SUSSES TOD 
+10- Deltarune CyberWorld
