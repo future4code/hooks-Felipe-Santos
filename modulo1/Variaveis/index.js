@@ -1,14 +1,13 @@
-const nome1 = prompt("Digite um numero  ")
-const nome2 = prompt("digite outro numero ")
-console.log(nome1)
+const nome = prompt("Escolha um numero ")
+const nome2=prompt("escolha outro numero ")
+const casa=Number(nome)
+const house=Number(nome2)
+console.log(nome)
 console.log(nome2)
-const a=nome1
-const b=nome2
-const x= nome1-nome2
+const x = (casa+house)
 console.log(x)
-const e=nome1
-const r=nome2
-const y= e*r
-console.log(y)
+const y=casa*house
+console.log (y)
+ 
 
 
