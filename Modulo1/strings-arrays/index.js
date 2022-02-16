@@ -7,7 +7,14 @@ console.log(frase)
 //exercicio02
 const comidafavorita=[" pizza ", " lasanha " , " hamburgue", " frango-milanesa" , "farofa "]
 console.log(comidafavorita)
-console.log(" essas saoo minhas comidas favoritas ", comidafavorita )
+console.log(comidafavorita[0])
+console.log(comidafavorita[1])
+console.log(comidafavorita[2])
+console.log(comidafavorita[3])
+console.log(comidafavorita[4])
+const digite=prompt(" qual sua comida favorita ?")
+comidafavorita [1]= digite
+console.log(comidafavorita)
 
 
 //exercicio03
@@ -35,7 +42,7 @@ console.log(array)
 //3
 // array 11 em numeros e valor 
 // 9
-
+//
 
 
 

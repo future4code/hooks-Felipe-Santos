@@ -53,7 +53,7 @@ function imprimeTresCoresFavoritas() {
   let cor =prompt(" digite uma cor favorita ")
   let cor2=prompt(" digite outra cor")
   let cor3=prompt("digite outra cor ")
-  console.log(" " +cor+ " " +cor2+ " " +cor3)
+  console.log( " " + cor+ " "   +cor2+ " " +cor3)
 
 }
 
@@ -121,11 +121,11 @@ function checaAnoBissexto(ano) {
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
-   const i  =prompt("digite sua idade ")
+   const i  =prompt("maior de 18 ? ")
    const t=prompt("termino ensino medio ?")
    const aa=prompt(" tem disponibilidade de horario ?")
-   const resultado = (i && t && aa ) 
-   console.log(resultado)
+   const v= (i)
+   
  
   
   
