@@ -96,20 +96,22 @@ function retornaUltimoElemento(array) {
 
 // EXERCÍCIO 11
 function trocaPrimeiroEUltimo(array) {
-  
+ 
   
 
 }
 
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
-   return (string1 === string2 ) || (string1 !== string2 )  
+   let letra=string1.toUppercase
+   let letra2=string2.toUppercase
+   return letra===letra2  
 }
 
 // EXERCÍCIO 13
 function checaRenovacaoRG() {
-  // implemente sua lógica aqui
-
+  
+  
 }
 
 // EXERCÍCIO 14
@@ -121,10 +123,14 @@ function checaAnoBissexto(ano) {
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
-   const i  =prompt("maior de 18 ? ")
-   const t=prompt("termino ensino medio ?")
-   const aa=prompt(" tem disponibilidade de horario ?")
-   const v= (i)
+   const i  =prompt("voce tem mais de 18 ? ")
+   const t=prompt("voce termino ensino medio ?")
+   const aa=prompt(" voce tem disponibilidade de horario ?")
+   const idade= i==="sim"
+   const termino=t==="sim"
+   const disponivel=aa==="sim"
+   const valor =(idade&& termino && disponivel)
+   console.log(valor)  
    
  
   
