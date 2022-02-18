@@ -124,8 +124,10 @@ function checaValidadeInscricaoLabenu() {
    const i  =prompt("maior de 18 ? ")
    const t=prompt("termino ensino medio ?")
    const aa=prompt(" tem disponibilidade de horario ?")
-   const v= (i)
-   
+   const v= (i==="sim")
+   const tt=(t==="sim")
+   const aaa=(aa==="sim")
+    console.log(v && tt && aaa ) 
  
   
   
