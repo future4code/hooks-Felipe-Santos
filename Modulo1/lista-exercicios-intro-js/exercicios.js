@@ -123,6 +123,15 @@ function checaAnoBissexto(ano) {
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
+ Lista-Exercicios-intro-js
+   const i  =prompt("maior de 18 ? ")
+   const t=prompt("termino ensino medio ?")
+   const aa=prompt(" tem disponibilidade de horario ?")
+   const v= (i==="sim")
+   const tt=(t==="sim")
+   const aaa=(aa==="sim")
+    console.log(v && tt && aaa ) 
+
    const i  =prompt("voce tem mais de 18 ? ")
    const t=prompt("voce termino ensino medio ?")
    const aa=prompt(" voce tem disponibilidade de horario ?")
@@ -132,6 +141,7 @@ function checaValidadeInscricaoLabenu() {
    const valor =(idade&& termino && disponivel)
    console.log(valor)  
    
+ master
  
   
   
