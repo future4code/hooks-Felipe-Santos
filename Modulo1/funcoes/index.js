@@ -1,69 +1,73 @@
-//exercicio 01
-function imprimirOla(nome, idade ,profissao, estado){
-console.log(`Eu Sou ${nome} , Tenho ${idade} , moro  ${profissao} e sou ${estado}`)
+// exercicio 01 escrita 
+function idade (digitarIdade) {
+    if(digitarIdade > 18){
 
+        return `Parabens voce pode dirigir`
+    }else{
+        return `voce e menor de idade ainda não pode `
+
+    }
 }
-imprimirOla("felipe De Oliveira Santos"," 22 anos ","em Niteroi" , " estudante")
+let digitarIdade=prompt("digite sua idade ")
+console.log(idade(digitarIdade))
+          
+ //exercicio 02
 
-function imprimirteste() {
-console.log(" Eu sou Felipe, tenho 22 anos, moro em Niteroi e sou estudante.")
+ function turma(digitahora){
+      if (digitahora ==="M"){
+           return `bom dia`
+      
+        } else if (digitahora==="V") {
+         return `Boa tarde`
+        }else if (digitahora ==="N")
+         return `boa noite `
+          
+          
+    }  
+ const digitahora=prompt(" Verificando turno ")
+ console.log(turma(digitahora))
+   
+     //exercicio 03
 
-}
-imprimirteste()
+  let turma = "M";
+  switch(turma) {
+      case"M":
+      console.log("Bom dia ");
+      break;
+     case "V":
+       console.log("Boa Tarde")
+      break;
+     case "N":
+     console.log("Boa noite ")
+     break;
+    }
 
-// exercicio 02 
-function numero(num1,num2){
-  return num1+num2
-}
-console.log(numero( 10,20))
+    //exercicio 04
+    let filme=prompt("que filme  ?")
+    let preco=prompt(" preco do ingresso ")
+     if (filme==="fantasia" && preco ==="15"){
+         console.log("bom filme ")
+         
+     } else {
+         console.log("escolha outro filme ")
+     }
 
-function numero2(num1,num2){
-    return num1<=num2
-}
-console.log(numero2(10,20))
+   
+   
+   
+   
+   
+   
+    //exercicio teorico 
+   //a) se o numero for divisivel por 2 e der zero ele passa  s e nao reprova
+   //B) impares 
+   //C)pares
+   // exercicio 02
+   //a) escolher uma fruta e sair o valor dela 
+   //B)2.25 se for maça
+   //c)seria automatico e sairia valor da pera , ele iria ler tudo
+   //exercicio 03
+   //A)se o numero digitado for maior que 0 ele passa se nao reprova
+   //B) numero 10 ele passa , numero -10 ele nao lera 
+   //C) sim ele tirar ler mais n aparecera resposta 
 
-function numero3(num1,){
-    return (num1%2 ==0)
-}      
-console.log(numero3(20))
-  
-let textoDoUsuario=prompt("insira um texto")
-const outrafuncao=function(texto){
-    return texto.toUpperCase()
-}
-const resposta=outrafuncao(textoDoUsuario)
-console.log(resposta)
-
-// erxercicio03
-let digita=Number(prompt("digite um numero"))
-let digita2=Number(prompt("digite outro valor"))
-const texte=function(texto){
-    return digita+digita2
-}
-const soma=texte(digita,digita2, )
-console.log(soma)
-
-const texte2=function(texto){
-    return digita*digita2
-}
-const multiplica=texte2(digita,digita2)
-console.log(multiplica)
-
-const diferenca=function(texto){
-    return digita-digita2
-}
-const diferen=diferenca((digita,digita2))
-console.log(diferen)
-
-const divisao=function(texti){
-    return digita/digita2
-}
-const divi=divisao((digita,digita2))
-console.log(divi)
-console.log(digita,digita2)
-
-//exericio teorico 
-// aparecera 5*2 = 10 5*10=50
-// acho que daria erro
-// voce digitara um texto e saira minusculo + palavra cenoura 
-/// saira sera reposta=outrafuncao(textoDousuario) 
