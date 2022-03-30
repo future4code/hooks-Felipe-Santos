@@ -4,7 +4,7 @@
   *
   **/
 
-* {
+  * {
     margin: 0;
     padding: 0;
 }
@@ -127,4 +127,8 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+body {
+    text-align: center;
 }
