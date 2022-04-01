@@ -1,0 +1,37 @@
+* {
+    margin:0;
+}
+
+header {
+      display: flex;
+      background-color: mediumvioletred;
+      padding: 10px;
+      justify-content: space-between;
+}
+
+
+
+.nave {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%
+    
+}
+
+img {
+    width: 20px;
+    height: 20px;
+
+
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;    
+    text-align: center;
+    line-height: 100px;
+    background-color: mediumvioletred;
+}
+
