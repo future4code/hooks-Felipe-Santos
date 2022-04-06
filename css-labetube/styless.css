@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+     display: flex;
+     background-color: orange;
+      padding: 20px;
+      justify-content: space-between;
+     
+    }
+input {
+     width: 320px;
+     height: 40px;
+}
+
+
+main {
+     display: flex;
+     flex-wrap: wrap;
+     display:grid;
+     grid-template-columns: repeat(4,1fr);
+     gap: 2vw;
+     padding:10px;
+
+    
+}
+.video-photo {
+     width: 300px;
+     height: 300px;
+    
+
+}
+.video-photo video{
+     display:flex;
+     width: 95%;
+     height: 95%;
+     box-shadow: 2px 2px 5px darkgray;
+    
+}
+
+
+footer {
+     background-color:green;
+     color: black;
+     display: flex;
+     height: 100px;
+     
+     
+}
