@@ -1,0 +1,11 @@
+1- Analisando os dados
+2- Vendo Partes principais da pergunta
+3- ler oque oque enunciado diz
+4- Separar os Dados
+5- depois de separar os Dados Analisa-los
+6- Forma uma ideia da pergunta tipo separa como usar pra que cada parte faz
+7- interligar e forma 
+8- Começar Codar e forma a sua ideia em uma logica
+9- Testa essa logica
+10- implementar sua logica
+11-  Chorar e rele todos os passos e tentar ver se funciona
