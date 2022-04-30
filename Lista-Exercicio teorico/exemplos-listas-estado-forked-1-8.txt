@@ -1,0 +1,95 @@
+1-import React from "react";
+
+// Esse exemplo demonstra que o React renderiza cada
+// componente de um array de componentes quando ele é
+// colocado na tela.
+
+// Exercício: Adicione mais uma pessoa à lista de pessoas
+// Garanta que viu essa mudança refletida na tela.
+
+class Exemplo1 extends React.Component {
+  render() {
+    // Array de componentes colocado na variável lista de componentes
+    const listaDeComponentes = [<p>Paula</p>, <p>João</p>, <p>Felipe</p>];
+    return (
+      <div>
+        <h1>Exemplo 1</h1>
+        {/* Abaixo, a variável lista de componentes é colocada na tela.
+            Repare que os dois componentes do array aparecem na tela.*/}
+        <div>{listaDeComponentes}</div>
+      </div>
+    );
+  }
+}
+
+export default Exemplo1;
+2-
+import React from "react";
+
+// Esse exemplo demonstra como transformar um array de dados (nesse caso, strings)
+// em um array de componentes.
+
+// Exercício: Adicione mais uma pessoa à lista de pessoas
+// Garanta que viu essa mudança refletida na tela.
+
+class Exemplo2 extends React.Component {
+  render() {
+    // Array de strings com nomes de pessoas sendo colocado na variavel pessoas
+    const pessoas = ["Amanda", "Paula","felipe"];
+
+    // Usamos a função de array map para transformar o array de strings
+    // em um array de componentes. Revise a função map se não lembra
+    // como ela funciona. Ela é bem importante!
+    const listaDeComponentes = pessoas.map(pessoa => {
+      // Aqui, CADA item do array é representado pela variavel pessoa.
+      // Cada pessoa vai gerar um <p>{pessoa}</p>, que estará no novo array.
+      return <p>{pessoa}</p>;
+    });
+
+    return (
+      <div>
+        <h1>Exemplo 2</h1>
+        {/* Como no exemplo anterior, a variavel listaDeComponentes, que
+        guarda o retorno da funcao map, aparece na tela */}
+        <div>{listaDeComponentes}</div>
+      </div>
+    );
+  }
+}
+
+export default Exemplo2;
+3-
+/ Esse exemplo demonstra como a lista pode estar armazenada no
+// estado, ao invés de numa variável dentro da função render.
+// Não existe nenhuma diferença prática por enquanto. As listas
+// no estado podem ser alteradas, e as que estão nas variáveis não,
+// mas isso veremos no outro conjunto de exemplos.
+
+// Exercício: Faça cada item da lista aparecer em um <li>, ao invés de
+// em um <p>. Garanta que observou a mudança acontecer na tela.
+
+class Exemplo3 extends React.Component {
+  // Inicializando o estado
+  state = {
+    // O estado possui uma variável chamada pessoas, que possui um
+    // array de pessoas.
+    pessoas: ["Amanda", "João"]
+  };
+
+  render() {
+    // Acessamos o array de pessoas dentro do estado (this.state.pessoas)
+    // e ai usamos o método map para transformá-lo em um array de componentes
+    const listaDeComponentes = this.state.pessoas.map((pessoa) => {
+      return <li>{pessoa}</li>;
+    });
+
+    return (
+      <div>
+        <h1>Exemplo 3</h1>
+        <div>{listaDeComponentes}</div>
+      </div>
+    );
+  }
+}
+
+export default Exemplo3;
