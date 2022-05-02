@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react'
 
+
 export class App extends React.Component{
   state={
     dados:[{Usuario: "",Mensagem: "" }],
@@ -24,7 +25,6 @@ export class App extends React.Component{
   }
  
   
-  
   render() {
     const dadosComponentes=this.state.dados.map((dado)=>{
       return(
@@ -37,16 +37,17 @@ export class App extends React.Component{
     )
     return (
     <div className="body">
-   
+      
       <div className="Container">
       {dadosComponentes}
+      
           <div className="corpinho">
           
                <div className="footer">
                
-               <input type="text" value={this.state.Usuario} placeholder="Usuario" onChange={(event)=>this.receberUsuario(event)}/>
-               <input  type="text" value={this.state.Mensagem} placeholder="Mensagem"onChange={(event)=>this.receberMensagem(event)} />
-                <button  onClick={()=> this.enviaDados()}>Enviar</button>
+                <a className="messagem"><input type="text" value={this.state.Usuario} placeholder="Usuario" onChange={(event)=>this.receberUsuario(event)}/></a>
+               <input  type="text" value={this.state.Mensagem} placeholder="Mensagem"onChange={(event)=>this.receberMensagem(event) } />
+                <button onClick={()=> this.enviaDados()}> <img src="https://cdn-icons-png.flaticon.com/512/126/126412.png" height ="15" width="15" /></button>
                 
               
               </div>
@@ -58,5 +59,7 @@ export class App extends React.Component{
     )
     }
 }
+
+
 
 export default App
