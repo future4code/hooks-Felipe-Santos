@@ -1,0 +1,49 @@
+.body { 
+  background-image: url(../src/Imagem/qwd83nc4xxf41.jpg);
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: flex-end;
+  border: 1px solid black;
+  width: 450px;
+  margin:0px auto; 
+  
+
+}
+button {
+  border-radius: 30px;
+  background-image:url(../src/Imagem/kisspng-airplane-paper-plane-emoji-computer-icons-paper-airplanes-5ae84dca477c58.7059614215251737062928.png);
+}
+  
+
+  
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
