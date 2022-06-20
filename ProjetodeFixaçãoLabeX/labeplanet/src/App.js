@@ -1,15 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import HomePages from './Pages/HomePages';
-import LoginPage from './Pages/LoginPage'
-
-
+import Navigator from './navigate/Navigator';
 
 const App =() => {
+
   return (
     <div>
       <div>
-       <LoginPage/>
+       <Navigator/>
       </div>
     </div>
   )

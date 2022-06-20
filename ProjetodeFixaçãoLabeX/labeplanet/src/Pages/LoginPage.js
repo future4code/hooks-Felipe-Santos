@@ -1,10 +1,10 @@
 import React from "react"
-
-
-
+import { HomesPages } from "../navigate/Rotas";
 
 const LoginPage = () => {
+    
     return (
+        
 
         <div>
             <div><h2>Login</h2></div>
@@ -16,4 +16,4 @@ const LoginPage = () => {
         </div>
     )
 }
-export default LoginPage
+export default LoginPage;

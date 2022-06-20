@@ -3,11 +3,11 @@ import React from "react"
 
 
 
-const lisTripsPage = () => {
+const ListTripsPage = () => {
     return (
         <div>
              
         </div>
     )
 }
-export default lisTripsPage
+export default ListTripsPage

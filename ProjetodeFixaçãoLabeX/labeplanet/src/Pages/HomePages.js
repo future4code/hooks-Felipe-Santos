@@ -1,12 +1,13 @@
 import React from 'react'
-import lisTripsPage from './ListTripsPage'
+import { useNavigate } from 'react-router-dom'
 
+const HomePages = () => {
+    let navigate=useNavigate();
 
-const homePages = () => {
     return (
         <div>
             <div>
-                <button onClick={lisTripsPage}>Ver Viagens</button>
+                <button>Ver Viagens</button>
 
             </div>
             <div>
@@ -21,4 +22,4 @@ const homePages = () => {
         </div>
     )
 }
-export default homePages
+export default HomePages;
