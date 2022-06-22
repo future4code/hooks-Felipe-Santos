@@ -13,10 +13,10 @@ const Navigator=()=>{
     return (
         <BrowserRouter>
         <Routes>
-            <Route index element={<HomePages/>}/>
+            <Route path= "/" element={<HomePages/>}/>
             <Route path="/LoginPage" element={<LoginPage/>}/>
             <Route path="/CreateTripPage" element={<CreateTripPage/>}/>
-            <Route path="/LisTripsPage" element={<ListTripsPage/>}/>
+            <Route path="/ListTripsPage" element={<ListTripsPage/>}/>
             <Route path="/TripDetailsPage" element={<TripDetailsPage/>}/>
             <Route path="/ApplicationFormPage" element={<ApplicationFormPage/>}/>
             <Route path="/AdminHomePage" element={<AdminHomePage/>}/>

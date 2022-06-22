@@ -1,21 +1,23 @@
-export const HomePages = (navigator) => {
-    navigator("/LoginPage")
+import { Navigate } from "react-router-dom"
+
+export const HomePages = (navigate) => {
+    navigate("/HomePages")
 }
-export const LoginPage = (navigator) => {
-    navigator("/HomePages")
+export const LoginPage = (navigate) => {
+    navigate("/LoginPage")
 }
-export const ApplicationFormPage = (navigator) => {
-    navigator("/ListTripsPage")
+export const ApplicationFormPage = (navigate) => {
+    navigate("/ApplicationFormPage")
 }
-export const ListTripsPage = (navigator) => {
-    navigator("/HomePages")
+export const ListTripsPage = (navigate) => {
+    navigate("/ListTripsPage")
 }
-export const AdminHomePage = (navigator) => {
-    navigator("/LoginPage")
+export const AdminHomePage = (navigate) => {
+    navigate("/AdminHomePage")
 }
-export const CreateTripPage = (navigator) => {
-    navigator("/AdminHomePage")
+export const CreateTripPage = (navigate) => {
+    navigate("/CreateTripPage")
 }
-export const TripDetailsPage = (navigator) => {
-    navigator("/AdminHomePage")
+export const TripDetailsPage = (navigate) => {
+    navigate("/TripDetailsPage")
 }
