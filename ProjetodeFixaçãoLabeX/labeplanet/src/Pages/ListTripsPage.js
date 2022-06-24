@@ -9,7 +9,8 @@ const ListTripsPage = () => {
     return (
         <div>
             
-            <div> <button onClick={()=>navigate("/")}> Sair</button></div>
+            <div> <button onClick={()=>navigate("/")}> Voltar</button></div>
+            <div> <button onClick={()=>navigate("/ApplicationFormPage")}>Inscrever-se</button></div>
              
         </div>
     )
