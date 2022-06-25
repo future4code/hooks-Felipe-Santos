@@ -43,7 +43,8 @@ const TripDetailsPage = () => {
       <p>Local: {trip.planet}</p>
       <p>Duração: {trip.durationInDays}</p>
       <p>Data: {trip.date}</p>
-      
+      <button>Detalhes</button>
+      <button>Deletar</button>
     </div>
     
   })
