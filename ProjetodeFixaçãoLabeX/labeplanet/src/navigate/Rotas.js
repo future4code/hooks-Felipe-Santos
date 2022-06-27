@@ -21,3 +21,6 @@ export const CreateTripPage = (navigate) => {
 export const TripDetailsPage = (navigate) => {
     navigate("/TripDetailsPage")
 }
+export const AprovandoCandidato=(navigate)=>{
+    navigate("/AprovandoCandidato")
+}

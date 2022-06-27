@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Navigator from './navigate/Navigator';
 
+
+
 const App =() => {
 
   return (
