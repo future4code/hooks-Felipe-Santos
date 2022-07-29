@@ -7,7 +7,7 @@ describe("Checa bissexto", () => {
     expect(resultado).toEqual(true);
   });
 
-  test("retorna true pra 2000", () => {
+  test("retorna true pra 2000..", () => {
     const resultado = checaBissexto(2000);
 
     expect(resultado).toEqual(true);
