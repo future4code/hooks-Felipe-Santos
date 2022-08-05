@@ -1,0 +1,15 @@
+{
+    "name": "package-json",
+    "version": "1.0.0",
+    "description": "node-package-json",
+    "main": "index.js",
+    "type":"module",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1" ,
+      "start": "node ./exercicio2.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  
