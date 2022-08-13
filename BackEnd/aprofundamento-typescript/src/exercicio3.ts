@@ -1,4 +1,4 @@
-const posts = [
+const posts:Post [] = [
     {
       autor: "Alvo Dumbledore",
       texto: "Não vale a pena viver sonhando e se esquecer de viver"
@@ -21,12 +21,12 @@ const posts = [
     }
   ]
 
-  type person={
+  type Post={
     autor:string
     texto:string
   }
   
-  function buscarPostsPorAutor(posts:any, autorInformado:string) {
+  function buscarPostsPorAutor(posts:any[], autorInformado:string,):Post[] {
     return posts.filter(
       
       (post:any) => {
