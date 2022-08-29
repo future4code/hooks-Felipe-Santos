@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const cadastrados = [
-    { id: 1,
+    {
+        id: 1,
         name: "Felipe Oliveira Santos",
         cpf: 20523021637,
         data: "14/01/2000",
@@ -43,33 +44,28 @@ app.get("/banco/verSaldo", (req, res) => {
     catch (_a) {
     }
 });
-app.patch("/banco/adicionar", (req, res) => {
+app.post("/banco/receber/pagar", (req, res) => {
     try {
         const cpf = Number(req.headers.cpf);
-        const mudar = (req.body.dinheiro);
-        const adicionar = cadastrados.map((verificar) => { verificar.cpf === cpf; });
-        const novo = {
-            dinheiro: req.body.dinheiro,
+        const testando = {
+            data: req.body.date
         };
-        cadastrados.push(adicionar && novo && mudar);
-        //  res.send(cadastrados)
-    }
-    catch (_a) {
-    }
-});
-app.put("/banco/pagarConta", (req, res) => {
-    try {
-        const cpf = Number(req.headers.cpf);
-        const pagar = Number(req.body.dinheiro);
-        const adicionar = cadastrados.map((verificar) => { verificar.cpf === cpf; });
-        const meuDinDin = cadastrados.map((dinheirinho) => dinheirinho.dinheiro);
-        const pagarcontinha = {
-            dinheiro: pagar,
-            data: req.body.data
+        const puxando = {
+            value: req.body.dinheiro,
         };
-        const pagamento = meuDinDin - pagarcontinha;
-        cadastrados.push(adicionar && pagamento);
-        res.send(cadastrados);
+        const adicionar = cadastrados.map((verificar) => {
+            if (verificar.cpf === cpf) {
+                verificar.dinheiro += req.body.dinheiro;
+                verificar.movimentodaconta.push(puxando);
+            }
+            else {
+                (verificar.cpf === cpf);
+                verificar.dinheiro - req.body.dinheiro;
+                verificar.movimentodaconta.push(puxando);
+            }
+            return verificar;
+        });
+        res.send(adicionar);
     }
     catch (_a) {
     }
