@@ -1,62 +1,25 @@
 import express from "express"
 import cors from "cors"
-import { setOriginalNode } from "typescript"
+import { idText, setOriginalNode, visitFunctionBody } from "typescript"
 
 
 const cadastrados:clientes[]=[
     {id:1,
     name:"Felipe Oliveira Santos",
-    cpf:"205-230-216-37",
-    data:"14/01/2000"}
+    cpf:20523021637,
+    data:"14/01/2000",
+    movimentodaconta:[],
+    dinheiro:0
+}
 ]
 
 type clientes = {
     id: number
     name: string,
-    cpf: string,
+    cpf: number,
     data: string,
-}
-
-type transferencia = {
-    name: string,
-    cpf: string,
-    valor: number,
-    type: TIPO,
-    data: string,
-    operacao: operacao.transferencia,
-    detalhe: string,
-}
-enum TIPO {
-    DEBITO = "debito",
-    CREDITO = "credito"
-}
-enum operacao {
-    transferencia = "transferencia enviada",
-    transferenciaRecebida = "Transferencia Recebida",
-    deposito = "Deposito Recebido",
-    pay = "pagamento de conta"
-}
-type pay = {
-    description: string,
-    valor: number,
-    type: TIPO
-    operacao: operacao
-}
-
-type User = {
-    name: string,
-    cpf: string,
-    date: string,
-    movimentacoes: deposito[] & transferencia[] & pay[]
-}
-type deposito = {
-    name: string,
-    cpf: string,
-    valor: number,
-    type: TIPO,
-    data: string,
-    operacao: operacao.deposito,
-    detalhe: string,
+    movimentodaconta:[],
+    dinheiro:number
 }
 
 
@@ -77,11 +40,59 @@ app.post("/banco/cadastraClientes",(req,res)=>{
         id: Date.now(),
         name: req.body.name,
         cpf: req.body.cpf,
-        data: req.body.data
+        data: req.body.data,
+        movimentodaconta:[],
+        dinheiro:0
     }
     cadastrados.push(novoCadastro)
 })
 
+app.get("/banco/verSaldo",(req,res)=>{
+    try{
+        const cpf =Number(req.headers.cpf)
+        const result=cadastrados.filter(achando=>achando.cpf===cpf)
+        return res.send(result) 
+    } catch{
+
+    }
+})
+  
+app.patch("/banco/adicionar",(req,res)=>{
+  try {const cpf =Number(req.headers.cpf)
+    const mudar=(req.body.dinheiro)
+    const adicionar=cadastrados.map((verificar)=>{verificar.cpf===cpf})
+     const novo:clientes|any={
+        dinheiro:req.body.dinheiro,
+        
+     }
+     cadastrados.push( adicionar && novo &&mudar )
+     res.send(cadastrados)
+   
+  
+  
+
+  }catch{
+
+  }
+})
+
+app.put("/banco/pagarConta",(req,res)=>{
+    try{const cpf=Number(req.headers.cpf)
+        const pagar=Number(req.body.dinheiro)
+        const adicionar:number|any=cadastrados.map((verificar)=>{verificar.cpf===cpf})
+        const meuDinDin:Number|any=cadastrados.map((dinheirinho)=>dinheirinho.dinheiro)
+        const pagarcontinha:clientes|any={
+            dinheiro:pagar,
+            data:req.body.data
+        }
+        const pagamento= meuDinDin-pagarcontinha
+         cadastrados.push(adicionar &&pagamento)
+         res.send(cadastrados)
+
+    }catch{
+
+    }
+})
 
 
 
