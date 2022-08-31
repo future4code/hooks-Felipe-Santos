@@ -42,16 +42,6 @@ app.post("/criarFruta", (req, res) => {
     produtos.push(disgramado);
     res.status(201).send(disgramado);
 });
-// app.put("/mudarValor",(req,res)=>{
-//     const id=(req.body.id)
-//     const Frutamudar=produtos.map((frutas)=>{
-//         frutas.id===id
-//         if(!Frutamudar){
-//             throw Error ("Não existe")
-//         }else {
-//         }
-//     })
-// })
 app.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);
     const achando = produtos.find((tarefa) => tarefa.id === id);
@@ -62,11 +52,11 @@ app.delete("/delete/:id", (req, res) => {
         }
         else {
             produtos.splice(achandoindex, 1);
-            res.send("Sua Tarefa foi excluida");
+            res.send(produtos);
         }
     }
     catch (error) {
-        res.send(error.message);
+        res.send(error);
     }
 });
 app.listen(3003, () => {
