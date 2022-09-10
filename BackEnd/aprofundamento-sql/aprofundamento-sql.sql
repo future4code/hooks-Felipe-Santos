@@ -1,4 +1,4 @@
-USE`hooks-4313282-felipe-santos`;
+
 
 CREATE TABLE CONSTRAINTS(
 id INT PRIMARY KEY NOT NULL,
