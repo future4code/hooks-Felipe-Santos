@@ -10,7 +10,12 @@ app.use(express.json());
 app.use(cors());
 
 
-
+type Produto={
+  id:number
+  name:string
+  price:number
+  image_url:string
+}
 
 type Cadastro={
    id:number
@@ -19,7 +24,7 @@ type Cadastro={
    email:string
  }
  
- app.post("/users",async(res:Response,req:Request)=>{
+ app.post("/users",async(req:Request,res:Response)=>{
    let errorCode=400
    try{
      const{id,name,password,email}=req.body
@@ -29,7 +34,7 @@ type Cadastro={
      }
  
      const novoUser:Cadastro|any={
-       id:Date.now,
+       id,
        name,
        password,
        email
@@ -44,33 +49,72 @@ type Cadastro={
    }catch(error){
  
      res.status(errorCode).send(error)
- 
    }
+   })
  
-   app.get("/users/buscar",async(res:Response,req:Request)=>{
-     let errorCode=400
+   app.get("/buscar",async(req:Request,res:Response)=>{
+     let errorCode:number=400
      try{
        const resultado=await connection.raw(`
        SELECT * FROM  labecommerce_users;
        `)
             
        res.status(200).send(resultado)
-     }catch(error){
-       res.status(errorCode).send(error)
+     }catch(error:any){
+       res.status(errorCode).send(error.message)
  
      }
    })
  
+   app.post("/products/adicionar",async(req:Request,res:Response)=>{
+    let errorCode=400
+  
+    try{
+      const {id,name,price,image_url}=req.body
+      if(!name || !price || !image_url){
+        throw new Error("Algo Errado no body preencha tudo porfavor")
+      }
+      const Produto:Produto|any={
+        id,
+        name,
+        price,
+        image_url
+      }
+      await connection.raw(`
+      INSERT INTO labecommerce_products (id,name,price,image_url)
+      VALUES(${Produto.id},"${Produto.name}",${Produto.price},"${Produto.image_url}")
+      `)
+      res.status(200).send("Produto Criado Com Sucesso")
+     
+
+    }catch(error){
+      res.status(errorCode).send(error)
+
+    }
+
+   });
  
+   app.get("/products",async(req:Request,res:Response)=>{
+    let errorCode:number=400
+    try{
+      const pegarProduto=await connection.raw(`
+      SELECT * FROM labecommerce_products;
+      `)
+      res.status(200).send(pegarProduto)
+    }catch(error){
+      res.status(errorCode).send(error)
+
+    }
+   });
  
- })
+
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
        const address = server.address() as AddressInfo;
-       console.log(`Server is running in http://localhost: ${address.port}`);
+       console.log(`Server is running in http://localhost:${address.port}`);
     } else {
        console.error(`Failure upon starting server.`);
     }
-});
+})
