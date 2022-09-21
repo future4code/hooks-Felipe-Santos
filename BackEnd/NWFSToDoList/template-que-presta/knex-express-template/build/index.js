@@ -14,63 +14,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const connection_1 = __importDefault(require("./database/connection"));
 const app_1 = __importDefault(require("./app"));
-app_1.default.get("/cadastro/users", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app_1.default.post("/users", (res, req) => __awaiter(void 0, void 0, void 0, function* () {
     let errorCode = 400;
     try {
-        const users = yield connection_1.default.raw(`
-    SELECT * FROM Cadastro;
-    `);
-        res.status(200).send(users);
-    }
-    catch (error) {
-        res.status(errorCode).send(errorCode);
-    }
-}));
-app_1.default.get("/Cadastro/users/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let errorCode = 400;
-    try {
-        const buscar = req.body.id;
-        if (buscar) {
-            const achado = yield connection_1.default.raw(`
-    SELECT * FROM Cadastro
-    WHERE id="${buscar}";
-    `);
+        const { id, name, password, email } = req.body;
+        if (!name || !password || !email) {
+            throw new Error("Algo esta errado no body porfavor reveja");
         }
-    }
-    catch (error) {
-        res.status(errorCode).send(errorCode);
-    }
-}));
-app_1.default.post("/Cadastro/users/Cadastrando", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let errorCode = 400;
-    try {
-        const { nome, nickname, email } = req.body;
-        if (!nome) {
-            throw new Error("Digite algum Nome porfavor");
-        }
-        if (!nickname) {
-            throw new Error("Digite algum nickname porfavor");
-        }
-        if (!email) {
-            throw new Error("escolha um email porfavor");
-        }
-        const adicionarCadastro = {
-            id: Number(Date.now()),
-            nome,
-            nickname,
-            email,
+        const novoUser = {
+            id: Date.now,
+            name,
+            password,
+            email
         };
         yield connection_1.default.raw(`
-  INSERT INTO Cadastro(id,nome,nickname,email)
-  VALUES(${adicionarCadastro.id},
-    "${adicionarCadastro.nome}",
-    "${adicionarCadastro.nickname}"
-    ,"${adicionarCadastro.email}")
-  `);
-        res.status(200).send("Cadastro Feito Com Sucesso !");
+    INSERT  INTO  labecommerce_users(id,name,password,email)
+    VALUES ("${novoUser.id}","${novoUser.name}","${novoUser.password}","${novoUser.email}")
+    `);
+        res.status(200).send("Criado Com Sucesso");
     }
     catch (error) {
-        res.status(errorCode).send(errorCode);
+        res.status(errorCode).send(error);
     }
+    app_1.default.get("/users/buscar", (res, req) => __awaiter(void 0, void 0, void 0, function* () {
+        let errorCode = 400;
+        try {
+            const resultado = yield connection_1.default.raw(`
+      SELECT * FROM  labecommerce_users;
+      `);
+            res.status(200).send(resultado);
+        }
+        catch (error) {
+            res.status(errorCode).send(error);
+        }
+    }));
 }));
 //# sourceMappingURL=index.js.map

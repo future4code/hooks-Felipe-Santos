@@ -18,7 +18,7 @@ const connection_1 = require("./data/connection");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
-app.post("/users", (res, req) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/users", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let errorCode = 400;
     try {
         const { id, name, password, email } = req.body;
@@ -26,7 +26,7 @@ app.post("/users", (res, req) => __awaiter(void 0, void 0, void 0, function* () 
             throw new Error("Algo esta errado no body porfavor reveja");
         }
         const novoUser = {
-            id: Date.now,
+            id,
             name,
             password,
             email
@@ -40,23 +40,58 @@ app.post("/users", (res, req) => __awaiter(void 0, void 0, void 0, function* () 
     catch (error) {
         res.status(errorCode).send(error);
     }
-    app.get("/users/buscar", (res, req) => __awaiter(void 0, void 0, void 0, function* () {
-        let errorCode = 400;
-        try {
-            const resultado = yield connection_1.connection.raw(`
+}));
+app.get("/buscar", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let errorCode = 400;
+    try {
+        const resultado = yield connection_1.connection.raw(`
        SELECT * FROM  labecommerce_users;
        `);
-            res.status(200).send(resultado);
+        res.status(200).send(resultado);
+    }
+    catch (error) {
+        res.status(errorCode).send(error.message);
+    }
+}));
+app.post("/products/adicionar", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let errorCode = 400;
+    try {
+        const { id, name, price, image_url } = req.body;
+        if (!name || !price || !image_url) {
+            throw new Error("Algo Errado no body preencha tudo porfavor");
         }
-        catch (error) {
-            res.status(errorCode).send(error);
-        }
-    }));
+        const Produto = {
+            id,
+            name,
+            price,
+            image_url
+        };
+        yield connection_1.connection.raw(`
+      INSERT INTO labecommerce_products (id,name,price,image_url)
+      VALUES(${Produto.id},"${Produto.name}",${Produto.price},"${Produto.image_url}")
+      `);
+        res.status(200).send("Produto Criado Com Sucesso");
+    }
+    catch (error) {
+        res.status(errorCode).send(error);
+    }
+}));
+app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let errorCode = 400;
+    try {
+        const pegarProduto = yield connection_1.connection.raw(`
+      SELECT * FROM labecommerce_products;
+      `);
+        res.status(200).send(pegarProduto);
+    }
+    catch (error) {
+        res.status(errorCode).send(error);
+    }
 }));
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
         const address = server.address();
-        console.log(`Server is running in http://localhost: ${address.port}`);
+        console.log(`Server is running in http://localhost:${address.port}`);
     }
     else {
         console.error(`Failure upon starting server.`);
