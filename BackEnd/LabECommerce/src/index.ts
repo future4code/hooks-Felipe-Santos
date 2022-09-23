@@ -66,7 +66,7 @@ type Cadastro={
        res.status(errorCode).send(error.message)
  
      }
-   })
+   });
  
    app.post("/products/adicionar",async(req:Request,res:Response)=>{
     let errorCode=400
