@@ -16,7 +16,7 @@ exports.getAddresinfo = void 0;
 const axios_1 = __importDefault(require("axios"));
 const getAddresinfo = (cadastro) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const {} = yield axios_1.default.get(``);
+        const {} = yield axios_1.default.get(`http://localhost:3003/users`);
     }
     catch (_a) {
     }

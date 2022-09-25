@@ -53,27 +53,27 @@ app.get("/buscar", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.status(errorCode).send(error.message);
     }
 }));
-app.post("/products/adicionar", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/users/adicionar", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let errorCode = 400;
     try {
         const { id, name, price, image_url } = req.body;
-        if (!name || !price || !image_url) {
-            throw new Error("Algo Errado no body preencha tudo porfavor");
+        if (!id || !name || !price || !image_url) {
+            throw new Error("Algo esta errado no body");
         }
-        const Produto = {
+        const adicionarProduto = {
             id,
             name,
             price,
             image_url
         };
         yield connection_1.connection.raw(`
-      INSERT INTO labecommerce_products (id,name,price,image_url)
-      VALUES(${Produto.id},"${Produto.name}",${Produto.price},"${Produto.image_url}")
+      INSERT INTO labecommerce_products(id,name,price,image_url)
+      VALUES(${adicionarProduto.id},"${adicionarProduto.name}",${adicionarProduto.price},"${adicionarProduto.image_url}") 
       `);
-        res.status(200).send("Produto Criado Com Sucesso");
+        res.status(200).send("Criado Com Sucesso");
     }
     catch (error) {
-        res.status(errorCode).send(error);
+        res.status(errorCode).send(error.message);
     }
 }));
 app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -83,6 +83,20 @@ app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* (
       SELECT * FROM labecommerce_products;
       `);
         res.status(200).send(pegarProduto);
+    }
+    catch (error) {
+        res.status(errorCode).send(error);
+    }
+}));
+app.post("/purchases", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let errorCode = 400;
+    try {
+        const { user_id, products_id, quantity } = req.body;
+        if (!user_id || !products_id || !quantity) {
+            const pegarProdutos = yield connection_1.connection.raw(`
+          SELECT * FROM labecommerce_purchases;`);
+            res.status(200).send(pegarProdutos);
+        }
     }
     catch (error) {
         res.status(errorCode).send(error);

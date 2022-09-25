@@ -11,9 +11,9 @@ app.use(cors());
 
 
 type Produto={
-  id:number
-  name:string
-  price:number
+  id:Number,
+  name:string,
+  price:string,
   image_url:string
 
   
@@ -25,6 +25,9 @@ type Cadastro={
    password:string
    email:string
  }
+
+
+
  
  app.post("/users",async(req:Request,res:Response)=>{
    let errorCode=400
@@ -68,32 +71,27 @@ type Cadastro={
      }
    });
  
-   app.post("/products/adicionar",async(req:Request,res:Response)=>{
-    let errorCode=400
-  
+   app.post("/users/adicionar",async(req:Request,res:Response)=>{
+    let errorCode:number=400
     try{
       const {id,name,price,image_url}=req.body
-      if(!name || !price || !image_url){
-        throw new Error("Algo Errado no body preencha tudo porfavor")
+      if(!id || !name ||!price || !image_url){
+        throw new Error("Algo esta errado no body")
       }
-      const Produto:Produto|any={
+      const adicionarProduto:Produto={
         id,
         name,
         price,
         image_url
       }
       await connection.raw(`
-      INSERT INTO labecommerce_products (id,name,price,image_url)
-      VALUES(${Produto.id},"${Produto.name}",${Produto.price},"${Produto.image_url}")
+      INSERT INTO labecommerce_products(id,name,price,image_url)
+      VALUES(${adicionarProduto.id},"${adicionarProduto.name}",${adicionarProduto.price},"${adicionarProduto.image_url}") 
       `)
-      res.status(200).send("Produto Criado Com Sucesso")
-     
+      res.status(200).send("Criado Com Sucesso")
 
-    }catch(error){
-      res.status(errorCode).send(error)
-
-    }
-
+    }catch(error:any){
+      res.status(errorCode).send(error.message)}
    });
  
    app.get("/products",async(req:Request,res:Response)=>{
@@ -108,6 +106,23 @@ type Cadastro={
 
     }
    });
+
+    app.post("/purchases",async(req:Request,res:Response)=>{
+      let errorCode:number=400
+      try{
+        const{user_id,products_id,quantity}=req.body
+        if(!user_id || !products_id || !quantity){
+          const  pegarProdutos=await connection.raw(`
+          SELECT * FROM labecommerce_purchases;`)
+          res.status(200).send(pegarProdutos)
+        }
+        
+
+      }catch(error){
+        res.status(errorCode).send(error)
+      }
+
+    });
  
 
 
