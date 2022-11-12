@@ -15,7 +15,7 @@ const userController=new UserController()
 const LoginControl=new LoginController()
 
 app.post ("/signup",userController.CreateAccount)
-app.post("/Login",LoginControl.loginAccount)
+app.get("/Login",LoginControl.loginAccount)
 
 
 

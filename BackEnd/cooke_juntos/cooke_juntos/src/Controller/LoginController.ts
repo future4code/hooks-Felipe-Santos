@@ -1,5 +1,5 @@
 import {Request,Response} from "express"
-import { UserBusinesss } from "../Business/LoginBusiness"
+import { UserBusines } from "../Business/LoginBusiness"
 
 
 export class LoginController{
@@ -12,8 +12,9 @@ export class LoginController{
             email,
             password
         }
-        const userBusinesss=new UserBusinesss()
-        await userBusinesss.loginAccount(input)
+         const userBusinesss=new UserBusines()
+        const result=await userBusinesss.loginAccount(input)
+        console.log(result,"Controler")
         res.status(201).send({message:"Usuario Logado Com Sucesso "})
 
     }catch(error:any){

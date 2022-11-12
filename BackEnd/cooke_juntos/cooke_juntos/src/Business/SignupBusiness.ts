@@ -15,7 +15,7 @@ export class  UserBusiness{
                 if(!password){
                     throw new Error("Senha Invalida")
                 }
-                if(password> 6){
+                if(password<6){
                     throw new Error("Senha tem que ser menor que 6 caracteres")
                 }
                 if(!email.includes("@")){
