@@ -1,9 +1,12 @@
 import {Basedatabase} from "./BaseDatabase"
 import { Signup} from "../Type/Signup"
-import {Login} from "../Type/Login"
+import { MyAccount } from "../Type/MyAccount"
+
 
 
 export class UserDatabase extends Basedatabase{
+    private userTable="Signup"
+    private userTable2="Receitas"
     
     public Signup=async(user:Signup)=>{
         try{    await UserDatabase.connection.insert({
@@ -11,7 +14,7 @@ export class UserDatabase extends Basedatabase{
             name:user.name,
             email:user.email,
             password:user.password
-        }).into("Signup")}
+        }).into(this.userTable)}
         catch(error:any){
             throw new Error(error.message)
 
@@ -20,27 +23,32 @@ export class UserDatabase extends Basedatabase{
     }
     public findUserbyEmail=async(email:string)=>{
         try{
-            const result=await UserDatabase.connection
+        const result=await UserDatabase.connection
         .where({email})
-        .into("Signup")
+        .into(this.userTable)
         console.log(result,"userdatabase")
         return result[0]
      }catch(error:any){
         throw new Error(error.message)
     }
     }
-    
-    public Login=async(user:Signup)=>{
-        try{    await UserDatabase.connection.insert({
-            email:user.email,
-            password:user.password
-        }).into("Signup")}
+
+    public CriarReceita=async(receitas:Receitas)=>{
+        try{ await UserDatabase.connection.insert({
+            id:receitas.id,
+            title:receitas.title,
+            description:receitas.description,
+            date:receitas.date
+        }).into(this.userTable2)}
         catch(error:any){
             throw new Error(error.message)
 
         }
        
     }
+    
+     
+
 
     
 

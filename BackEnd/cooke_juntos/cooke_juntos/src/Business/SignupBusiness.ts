@@ -1,5 +1,12 @@
 
 import {UserDatabase} from "../Data/UserDatabase"
+import { Authenticator } from "../Services/Authenticator"
+import { IdGenerator } from "../Services/IdGenerator"
+
+
+const idGenerator=new IdGenerator()
+const authenticator=new Authenticator()
+
 
 export class  UserBusiness{
     public CreateAccount=async(input:any   
@@ -22,17 +29,18 @@ export class  UserBusiness{
                     throw new Error("Não esqueça do @ ")
 
                 }
-                const id:string=Date.now().toString()
+                const id:string=idGenerator.generateId();
         
                 const userDatabase= new UserDatabase()
         
-                await userDatabase.Signup({
+                 await userDatabase.Signup({
                     id,
                     name,
                     email,
                     password
                 })
-               
+                const token=authenticator.generateToken({id})
+                   return token               
             }catch(error:any){
                 throw new Error(error.message)
             }

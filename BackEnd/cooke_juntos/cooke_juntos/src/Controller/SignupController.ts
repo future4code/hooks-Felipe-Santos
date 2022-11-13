@@ -2,6 +2,7 @@ import {Request,Response} from "express"
 import { UserBusiness } from "../Business/SignupBusiness"
 
 
+
 export class  UserController{
     public CreateAccount=async(
         req:Request,
@@ -17,9 +18,9 @@ export class  UserController{
                 password
             }
             const userBusiness= new UserBusiness()
-            await userBusiness.CreateAccount(input)
+            const token=await userBusiness.CreateAccount(input)
             
-            res.status(201).send({message:"usuario cadastrado com sucesso"})
+            res.status(201).send({message:"usuario cadastrado com sucesso",token})
         }catch(error:any){
             res.status(400).send(error.message)
         }
